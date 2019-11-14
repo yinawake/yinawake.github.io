@@ -91,12 +91,23 @@
         <p>最近在项目中会使用到多数据源，数据源太多了，所以采用的配置DataSource的方式，然后代码中使用<code>JdbcTempate(dataSource)</code>的方式。但是最近遇到一个问题，在使用<code>jt.batchUpdate(sqls)</code>时，发现如果有<code>sql</code>有误，<code>jdbctempalte</code>并不会回滚。由于代码框架很老，不再适合对每个数据源都配置<code>DataSourceTransactionManager</code>。最终在网上看见下面的方法，纪录一下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public static void batchExecute(JdbcTemplate jt, List&lt;String&gt; sqlList) throws SQLException&#123;</span><br><span class="line">		</span><br><span class="line">		if(sqlList.size() == 0) return;</span><br><span class="line">		</span><br><span class="line">		DefaultTransactionDefinition transactionDefinition = new DefaultTransactionDefinition();</span><br><span class="line">		DataSourceTransactionManager dm = new DataSourceTransactionManager(jt.getDataSource());</span><br><span class="line">		TransactionStatus tmp = dm.getTransaction(transactionDefinition);</span><br><span class="line">				</span><br><span class="line">		String[] sqls  =  new String[sqlList.size()];</span><br><span class="line">		sqlList.toArray(sqls);</span><br><span class="line">		try&#123;</span><br><span class="line">			jt.batchUpdate(sqls);</span><br><span class="line">			dm.commit(tmp);		</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			dm.rollback(tmp);</span><br><span class="line">			throw new SQLException(e.getMessage());</span><br><span class="line">		&#125; 	</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
+<p><strong>注意</strong></p>
+<blockquote>
+<p>由于spring的事务处理是按照 LIFO/stack behavior的方式进行的，所以在多个事务进行提交时必须按照上述规则进行，否则就会报上面异常  </p>
+</blockquote>
+<p>当你写了多个数据源事务时要遵循<code>后进先出</code>。否则会报出下面的错误</p>
+<blockquote>
+<p>spring tranaction: Cannot deactivate transaction synchronization - not active</p>
+</blockquote>
+<p><strong>修改后代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">try&#123;</span><br><span class="line">	jt.batchUpdate(sqls);			</span><br><span class="line">	jt2.batchUpdate(sqls2);</span><br><span class="line">        dm2.commit(tmp2);</span><br><span class="line">	dm.commit(tmp);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">	dm.rollback(tmp);</span><br><span class="line">	dm2.rollback(tmp2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p><strong>参考</strong><br><a href="https://www.csdn.net/link?target_url=http%3A%2F%2Fwww.oschina.net%2Fcode%2Fsnippet_574870_33828&id=50654505&token=22bb16d9501a48f18f0c98f770a8792c" target="_blank" rel="noopener">SpringJdbcTemplate添加事务支持</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/11/06/20191106/" data-id="ck2mxvqii0000bktr4pjxm6p1" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/11/06/20191106/" data-id="ck2y6uawb0000q0trsuftqtn8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JdbcTemplate/">JdbcTemplate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/事务/">事务</a></li></ul>
@@ -167,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/10/17/phaser_2048/" data-id="ck2mxvqis0004bktrsdz9lsy8" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/10/17/phaser_2048/" data-id="ck2y6uawq0004q0trv3r2s6fe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Phaser-js/">Phaser.js</a></li></ul>
@@ -212,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/10/16/hexo学习/" data-id="ck2mxvqio0001bktre7ik1oli" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/10/16/hexo学习/" data-id="ck2y6uawm0001q0tramo0jihb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
