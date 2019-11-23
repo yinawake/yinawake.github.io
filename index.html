@@ -62,6 +62,138 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-joint002" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/23/joint002/" class="article-date">
+  <time datetime="2019-11-22T16:00:00.000Z" itemprop="datePublished">2019-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Joint教程/">Joint教程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/23/joint002/">Paper &amp; Grid 缩略图!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <link rel="stylesheet" type="text/css" href="/my/joint/joint.css">    
+<script src="/my/joint/jquery.js"></script>
+<script src="/my/joint/lodash.js"></script>
+<script src="/my/joint/backbone.js"></script>
+<script src="/my/joint/joint.js"></script>
+
+<!-- <div id="myholder"></div> -->
+<div style="position: relative; padding-bottom: 100px;">
+    <div class="paper" id="paper-multiple-papers" style="position: absolute;"></div>
+    <div class="paper" id="paper-multiple-papers-small" style="position: absolute; top: 75px; left: 450px;"></div>
+</div>
+<script src="/my/joint_t/joint002.js"></script>
+
+<hr>
+<ul>
+<li>定义缩略图，两个<code>paper</code>。</li>
+<li><code>paper</code>的<code>background</code>属性</li>
+<li><code>interactive</code>交互属性、<code>scale</code>、<code>translate</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"/my/joint/joint.css"</span> /&gt;</span>	</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/jquery.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/lodash.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/backbone.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/joint.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"position: relative; padding-bottom: 100px;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"paper"</span> <span class="attr">id</span>=<span class="string">"paper-multiple-papers"</span> <span class="attr">style</span>=<span class="string">"position: absolute;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"paper"</span> <span class="attr">id</span>=<span class="string">"paper-multiple-papers-small"</span> <span class="attr">style</span>=<span class="string">"position: absolute; top: 75px; left: 450px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>	</span><br><span class="line">	var graph = new joint.dia.Graph;</span><br><span class="line">	</span><br><span class="line">	var paper = new joint.dia.Paper(&#123;</span><br><span class="line">		el: document.getElementById('paper-multiple-papers'),</span><br><span class="line">		model: graph,</span><br><span class="line">		width: 600,</span><br><span class="line">		height: 100,</span><br><span class="line">		gridSize: 1,</span><br><span class="line">		background: &#123;</span><br><span class="line">			color: 'rgba(0, 255, 0, 0.3)'</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	var paperSmall = new joint.dia.Paper(&#123;</span><br><span class="line">		el: document.getElementById('paper-multiple-papers-small'),</span><br><span class="line">		model: graph,</span><br><span class="line">		width: 150,</span><br><span class="line">		height: 25,</span><br><span class="line">		gridSize: 1,</span><br><span class="line">		interactive: false</span><br><span class="line">	&#125;);</span><br><span class="line">	paperSmall.scale(0.25);</span><br><span class="line"></span><br><span class="line">	/* paper.scale(0.5, 0.5);</span><br><span class="line">	paper.translate(300, 50); */</span><br><span class="line"></span><br><span class="line">	var rect = new joint.shapes.standard.Rectangle();</span><br><span class="line">	rect.position(100, 30);</span><br><span class="line">	rect.resize(100, 40);</span><br><span class="line">	rect.attr(&#123;</span><br><span class="line">		body: &#123;</span><br><span class="line">			fill: 'blue'</span><br><span class="line">		&#125;,</span><br><span class="line">		label: &#123;</span><br><span class="line">			text: 'hello',</span><br><span class="line">			fill: 'white'</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line"></span><br><span class="line">	rect.addTo(graph);</span><br><span class="line"></span><br><span class="line">	var rect2 = rect.clone();</span><br><span class="line">	rect2.translate(300, 0);</span><br><span class="line">	rect2.attr('label/text', 'world!');</span><br><span class="line">	rect2.addTo(graph);</span><br><span class="line"></span><br><span class="line">	var link = new joint.shapes.standard.Link();</span><br><span class="line">	link.source(rect);</span><br><span class="line">	link.target(rect2);</span><br><span class="line">	link.addTo(graph);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>参考</strong><br><a href="https://resources.jointjs.com/tutorial" target="_blank" rel="noopener">Joint tutorial</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.51doo.com/2019/11/23/joint002/" data-id="ck3b5g9wh0001r8tr5qhwdnai" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jointJs/">jointJs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-joint003" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/23/joint003/" class="article-date">
+  <time datetime="2019-11-22T16:00:00.000Z" itemprop="datePublished">2019-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Joint教程/">Joint教程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/23/joint003/">Element 元素!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <link rel="stylesheet" type="text/css" href="/my/joint/joint.css">    
+<script src="/my/joint/jquery.js"></script>
+<script src="/my/joint/lodash.js"></script>
+<script src="/my/joint/backbone.js"></script>
+<script src="/my/joint/joint.js"></script>
+
+<div id="myholder"></div>
+
+<script src="/my/joint_t/joint003.js"></script>
+
+<hr>
+<ul>
+<li>element.position()</li>
+<li>element.resize()</li>
+<li>element.clone()</li>
+<li>element.translate()</li>
+<li>element.addTo()</li>
+<li>element.attr()</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> graph = <span class="keyword">new</span> joint.dia.Graph;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">var</span> paper = <span class="keyword">new</span> joint.dia.Paper(&#123;</span><br><span class="line">    el: <span class="built_in">document</span>.getElementById(<span class="string">'myholder'</span>),</span><br><span class="line">    model: graph,</span><br><span class="line">    width: <span class="number">600</span>,</span><br><span class="line">    height: <span class="number">300</span>,</span><br><span class="line">    <span class="comment">// gridSize: 1,</span></span><br><span class="line">    drawGrid: <span class="literal">true</span>,</span><br><span class="line">    background: &#123;</span><br><span class="line">        color: <span class="string">'rgba(0, 255, 0, 0.3)'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect.position(<span class="number">100</span>, <span class="number">30</span>);</span><br><span class="line">rect.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'blue'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'hello'</span>,</span><br><span class="line">        fill: <span class="string">'white'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">rect.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect2 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect2.translate(<span class="number">400</span>, <span class="number">30</span>);</span><br><span class="line">rect2.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect2.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#2C3E50'</span>,</span><br><span class="line">        rx: <span class="number">5</span>,  <span class="comment">//圆角</span></span><br><span class="line">        ry: <span class="number">5</span>,</span><br><span class="line">        strokeWidth: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'World!'</span>,</span><br><span class="line">        fill: <span class="string">'#3498DB'</span>,</span><br><span class="line">        fontSize: <span class="number">18</span>,</span><br><span class="line">        fontWeight: <span class="string">'blod'</span>,</span><br><span class="line">        fontVariant: <span class="string">'small-caps'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">rect2.addTo(graph);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> link = <span class="keyword">new</span> joint.shapes.standard.Link();</span><br><span class="line">link.source(rect);</span><br><span class="line">link.target(rect2);</span><br><span class="line">link.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect3 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect3.position(<span class="number">100</span>, <span class="number">130</span>);</span><br><span class="line">rect3.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect3.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#E74C3C'</span>,</span><br><span class="line">        rx: <span class="number">200</span>,</span><br><span class="line">        ry: <span class="number">20</span>,</span><br><span class="line">        strokeWidth: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'Hello'</span>,</span><br><span class="line">        fill: <span class="string">'#ECF0F1'</span>,</span><br><span class="line">        fontSize: <span class="number">11</span>,</span><br><span class="line">        fontVariant: <span class="string">'small-caps'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">rect3.addTo(graph);</span><br><span class="line"></span><br><span class="line">rect4 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect4.position(<span class="number">400</span>, <span class="number">130</span>);</span><br><span class="line">rect4.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect4.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#8E44AD'</span>,</span><br><span class="line">        strokeWidth: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'world!'</span>,</span><br><span class="line">        fill: <span class="string">'white'</span>,</span><br><span class="line">        fontSize: <span class="number">13</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">rect4.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> link2 = <span class="keyword">new</span> joint.shapes.standard.Link();</span><br><span class="line">link2.source(rect3);</span><br><span class="line">link2.target(rect4);</span><br><span class="line">link2.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect5 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect5.position(<span class="number">100</span>, <span class="number">230</span>);</span><br><span class="line">rect5.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect5.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#2ECC71'</span>,</span><br><span class="line">        strokeDasharray: <span class="string">'10,2'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'hello'</span>,</span><br><span class="line">        fill: <span class="string">'black'</span>,</span><br><span class="line">        fontSize: <span class="number">13</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">rect5.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect6 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect6.position(<span class="number">400</span>, <span class="number">230</span>);</span><br><span class="line">rect6.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect6.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#F39C12'</span>,</span><br><span class="line">        rx: <span class="number">20</span>,</span><br><span class="line">        ry: <span class="number">20</span>,</span><br><span class="line">        strokeDasharray: <span class="string">'1,1'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'World!'</span>,</span><br><span class="line">        fill: <span class="string">'gray'</span>,</span><br><span class="line">        fontSize: <span class="number">18</span>,</span><br><span class="line">        fontWeight: <span class="string">'blod'</span>,</span><br><span class="line">        fontVariant: <span class="string">'small-caps'</span>,</span><br><span class="line">        textShadow: <span class="string">'1px 1px 1px black'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">rect6.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> link3 = <span class="keyword">new</span> joint.shapes.standard.Link();</span><br><span class="line">link3.source(rect5);</span><br><span class="line">link3.target(rect6);</span><br><span class="line">link3.addTo(graph);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>参考</strong><br><a href="https://resources.jointjs.com/tutorial" target="_blank" rel="noopener">Joint tutorial</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.51doo.com/2019/11/23/joint003/" data-id="ck3b5g9wo0005r8tr62zekfgv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jointJs/">jointJs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-joint001" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/23/joint001/" class="article-date">
@@ -105,7 +237,7 @@
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"/my/joint/joint.css"</span> /&gt;</span>	</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/jquery.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/lodash.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/backbone.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/joint.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myholder"</span>&gt;</span>  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>	</span><br><span class="line">	var graph = new joint.dia.Graph;</span><br><span class="line">	</span><br><span class="line">	var paper = new joint.dia.Paper(&#123;</span><br><span class="line">		el: document.getElementById('myholder'),</span><br><span class="line">		model: graph,</span><br><span class="line">		width: 600,</span><br><span class="line">		height: 100,</span><br><span class="line">		gridSize: 1</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	var rect = new joint.shapes.standard.Rectangle();</span><br><span class="line">	rect.position(100, 30);</span><br><span class="line">	rect.resize(100, 40);</span><br><span class="line">	rect.attr(&#123;</span><br><span class="line">		body: &#123;</span><br><span class="line">			fill: 'blue'</span><br><span class="line">		&#125;,</span><br><span class="line">		label: &#123;</span><br><span class="line">			text: 'hello',</span><br><span class="line">			fill: 'white'</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	rect.addTo(graph);</span><br><span class="line">	</span><br><span class="line">	var rect2 = rect.clone();</span><br><span class="line">	rect2.translate(300, 0);</span><br><span class="line">	rect2.attr('label/text', 'world!');</span><br><span class="line">	rect2.addTo(graph);</span><br><span class="line">	</span><br><span class="line">	var link = new joint.shapes.standard.Link();</span><br><span class="line">	link.source(rect);</span><br><span class="line">	link.target(rect2);</span><br><span class="line">	link.addTo(graph);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myholder"</span>&gt;</span>  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> graph = <span class="keyword">new</span> joint.dia.Graph;</span></span><br><span class="line">	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> paper = <span class="keyword">new</span> joint.dia.Paper(&#123;</span></span><br><span class="line"><span class="javascript">		el: <span class="built_in">document</span>.getElementById(<span class="string">'myholder'</span>),</span></span><br><span class="line">		model: graph,</span><br><span class="line">		width: 600,</span><br><span class="line">		height: 100,</span><br><span class="line">		gridSize: 1</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> rect = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span></span><br><span class="line">	rect.position(100, 30);</span><br><span class="line">	rect.resize(100, 40);</span><br><span class="line">	rect.attr(&#123;</span><br><span class="line">		body: &#123;</span><br><span class="line"><span class="javascript">			fill: <span class="string">'blue'</span></span></span><br><span class="line">		&#125;,</span><br><span class="line">		label: &#123;</span><br><span class="line"><span class="javascript">			text: <span class="string">'hello'</span>,</span></span><br><span class="line"><span class="javascript">			fill: <span class="string">'white'</span></span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	rect.addTo(graph);</span><br><span class="line">	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> rect2 = rect.clone();</span></span><br><span class="line">	rect2.translate(300, 0);</span><br><span class="line"><span class="javascript">	rect2.attr(<span class="string">'label/text'</span>, <span class="string">'world!'</span>);</span></span><br><span class="line">	rect2.addTo(graph);</span><br><span class="line">	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> link = <span class="keyword">new</span> joint.shapes.standard.Link();</span></span><br><span class="line">	link.source(rect);</span><br><span class="line">	link.target(rect2);</span><br><span class="line">	link.addTo(graph);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 <p><strong>参考</strong><br><a href="https://resources.jointjs.com/tutorial" target="_blank" rel="noopener">Joint tutorial</a></p>
@@ -113,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/11/23/joint001/" data-id="ck3b0klmj000420trqiopkik1" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/11/23/joint001/" data-id="ck3b5g9wt000ar8trix7iigi2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jointJs/">jointJs</a></li></ul>
@@ -170,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/11/06/20191106/" data-id="ck3b0klm7000020tr39fl78j6" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/11/06/20191106/" data-id="ck3b5g9wm0004r8trt4wchls6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JdbcTemplate/">JdbcTemplate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/事务/">事务</a></li></ul>
@@ -241,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/10/17/phaser_2048/" data-id="ck3b0klmc000120tr22el2fxa" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/10/17/phaser_2048/" data-id="ck3b5g9wq0006r8trjxj2r55y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Phaser-js/">Phaser.js</a></li></ul>
@@ -286,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/10/16/hexo学习/" data-id="ck3b0klml000520trqhu0tjgl" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/10/16/hexo学习/" data-id="ck3b5g9wb0000r8trco3o446v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -328,7 +460,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JdbcTemplate/" style="font-size: 10px;">JdbcTemplate</a> <a href="/tags/Phaser-js/" style="font-size: 10px;">Phaser.js</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jointJs/" style="font-size: 10px;">jointJs</a> <a href="/tags/事务/" style="font-size: 10px;">事务</a>
+      <a href="/tags/JdbcTemplate/" style="font-size: 10px;">JdbcTemplate</a> <a href="/tags/Phaser-js/" style="font-size: 10px;">Phaser.js</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jointJs/" style="font-size: 20px;">jointJs</a> <a href="/tags/事务/" style="font-size: 10px;">事务</a>
     </div>
   </div>
 
@@ -350,6 +482,14 @@
       <ul>
         
           <li>
+            <a href="/2019/11/23/joint002/">Paper &amp; Grid 缩略图!</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/joint003/">Element 元素!</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/23/joint001/">HELLO WORLD!</a>
           </li>
         
@@ -359,10 +499,6 @@
         
           <li>
             <a href="/2019/10/17/phaser_2048/">游戏2048</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/16/hexo学习/">Hexo学习</a>
           </li>
         
       </ul>
