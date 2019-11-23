@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Link 连线 | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="link.source() link.target() link.clone() link.addTo() link.vertices() link.router() link.connector() link.attr()  1234567891011121314151617181920212223242526272829303132333435363738394">
+<meta name="keywords" content="jointJs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Link 连线">
+<meta property="og:url" content="http://github.51doo.com/2019/11/23/joint004/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="link.source() link.target() link.clone() link.addTo() link.vertices() link.router() link.connector() link.attr()  1234567891011121314151617181920212223242526272829303132333435363738394">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-23T06:17:36.324Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Link 连线">
+<meta name="twitter:description" content="link.source() link.target() link.clone() link.addTo() link.vertices() link.router() link.connector() link.attr()  1234567891011121314151617181920212223242526272829303132333435363738394">
+  
+    <link rel="alternate" href="/atom.xml" title type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章列表</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://github.51doo.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-joint004" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/23/joint004/" class="article-date">
+  <time datetime="2019-11-22T16:00:00.000Z" itemprop="datePublished">2019-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Joint教程/">Joint教程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Link 连线
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <link rel="stylesheet" type="text/css" href="/my/joint/joint.css">    
+<script src="/my/joint/jquery.js"></script>
+<script src="/my/joint/lodash.js"></script>
+<script src="/my/joint/backbone.js"></script>
+<script src="/my/joint/joint.js"></script>
+
+<div id="myholder"></div>
+
+<script src="/my/joint_t/joint004.js"></script>
+
+<hr>
+<ul>
+<li>link.source()</li>
+<li>link.target()</li>
+<li>link.clone()</li>
+<li>link.addTo()</li>
+<li>link.vertices()</li>
+<li>link.router()</li>
+<li>link.connector()</li>
+<li>link.attr()</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> graph = <span class="keyword">new</span> joint.dia.Graph;</span><br><span class="line">	</span><br><span class="line"><span class="keyword">var</span> paper = <span class="keyword">new</span> joint.dia.Paper(&#123;</span><br><span class="line">    el: <span class="built_in">document</span>.getElementById(<span class="string">'myholder'</span>),</span><br><span class="line">    model: graph,</span><br><span class="line">    width: <span class="number">600</span>,</span><br><span class="line">    height: <span class="number">300</span>,</span><br><span class="line">    <span class="comment">// gridSize: 1,</span></span><br><span class="line">    drawGrid: <span class="literal">true</span>,</span><br><span class="line">    background: &#123;</span><br><span class="line">        color: <span class="string">'rgba(0, 255, 0, 0.3)'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect.position(<span class="number">100</span>, <span class="number">30</span>);</span><br><span class="line">rect.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'blue'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'Hello'</span>,</span><br><span class="line">        fill: <span class="string">'white'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">rect.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect2 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect2.position(<span class="number">400</span>, <span class="number">30</span>);</span><br><span class="line">rect2.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect2.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#2C3E50'</span>,</span><br><span class="line">        rx: <span class="number">5</span>,</span><br><span class="line">        ry: <span class="number">5</span>,</span><br><span class="line">        strokeWidth: <span class="number">2</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'World'</span>,</span><br><span class="line">        fill: <span class="string">'#3498DB'</span>,</span><br><span class="line">        fontSize: <span class="number">18</span>,</span><br><span class="line">        fontWeight: <span class="string">'blod'</span>,</span><br><span class="line">        fontVariant: <span class="string">'small-caps'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">rect2.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> link = <span class="keyword">new</span> joint.shapes.standard.Link();</span><br><span class="line">link.source(rect);</span><br><span class="line">link.target(rect2);</span><br><span class="line">link.attr(&#123;</span><br><span class="line">    line: &#123;</span><br><span class="line">        stroke: <span class="string">'blue'</span>,</span><br><span class="line">        strokeWidth: <span class="number">1</span>,</span><br><span class="line">        sourceMarker: &#123;</span><br><span class="line">            <span class="string">'type'</span>: <span class="string">'path'</span>,</span><br><span class="line">            <span class="string">'stroke'</span>: <span class="string">'black'</span>,</span><br><span class="line">            <span class="string">'fill'</span>: <span class="string">'red'</span>,</span><br><span class="line">            <span class="string">'d'</span>: <span class="string">'M 10 -5 0 0 10 5 Z'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        targetMarker: &#123;</span><br><span class="line">            <span class="string">'type'</span>: <span class="string">'path'</span>,</span><br><span class="line">            <span class="string">'stroke'</span>: <span class="string">'black'</span>,</span><br><span class="line">            <span class="string">'fill'</span>: <span class="string">'yellow'</span>,</span><br><span class="line">            <span class="string">'d'</span>: <span class="string">'M 10 -5 0 0 10 5 Z'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">link.labels([&#123;</span><br><span class="line">    attrs: &#123;</span><br><span class="line">        text: &#123;</span><br><span class="line">            text: <span class="string">'Hello World!'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;]);</span><br><span class="line">link.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect3 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect3.position(<span class="number">100</span>, <span class="number">130</span>);</span><br><span class="line">rect3.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect3.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#e74c3c'</span>,</span><br><span class="line">        rx: <span class="number">20</span>,</span><br><span class="line">        ry: <span class="number">20</span>,</span><br><span class="line">        strokeWidth: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'Hello'</span>,</span><br><span class="line">        fill: <span class="string">'#ecf0f1'</span>,</span><br><span class="line">        fontSize: <span class="number">11</span>,</span><br><span class="line">        fontVariant: <span class="string">'small-caps'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">rect3.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect4 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect4.position(<span class="number">400</span>, <span class="number">130</span>);</span><br><span class="line">rect4.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect4.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#8e44ad'</span>,</span><br><span class="line">        strokeWidth: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'World!'</span>,</span><br><span class="line">        fill: <span class="string">'white'</span>,</span><br><span class="line">        fontSize: <span class="number">13</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">rect4.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> link2 = <span class="keyword">new</span> joint.shapes.standard.Link();</span><br><span class="line">link2.source(rect3);</span><br><span class="line">link2.target(rect4);</span><br><span class="line">link2.vertices([</span><br><span class="line">    <span class="keyword">new</span> g.Point(<span class="number">250</span>, <span class="number">100</span>),</span><br><span class="line">    <span class="keyword">new</span> g.Point(<span class="number">300</span>, <span class="number">150</span>),</span><br><span class="line">    <span class="keyword">new</span> g.Point(<span class="number">350</span>, <span class="number">200</span>)</span><br><span class="line">]);</span><br><span class="line">link2.router(<span class="string">'orthogonal'</span>);</span><br><span class="line">link2.connector(<span class="string">'rounded'</span>);</span><br><span class="line">link2.attr(&#123;</span><br><span class="line">    line: &#123;</span><br><span class="line">        stroke: <span class="string">'gray'</span>,</span><br><span class="line">        strokeWidth: <span class="number">4</span>,</span><br><span class="line">        strokeDasharray: <span class="string">'4 2'</span>,</span><br><span class="line">        sourceMarker: &#123;</span><br><span class="line">            <span class="string">'type'</span>: <span class="string">'image'</span>,</span><br><span class="line">            <span class="string">'xlink:href'</span>: <span class="string">'http://cdn3.iconfinder.com/data/icons/49handdrawing/24x24/left.png'</span>,</span><br><span class="line">            <span class="string">'width'</span>: <span class="number">24</span>,</span><br><span class="line">            <span class="string">'height'</span>: <span class="number">24</span>,</span><br><span class="line">            <span class="string">'y'</span>: <span class="number">-12</span></span><br><span class="line">        &#125;,</span><br><span class="line">        targetMarker: &#123;</span><br><span class="line">            <span class="string">'type'</span>: <span class="string">'image'</span>,</span><br><span class="line">            <span class="string">'xlink:href'</span>: <span class="string">'http://cdn3.iconfinder.com/data/icons/49handdrawing/24x24/left.png'</span>,</span><br><span class="line">            <span class="string">'width'</span>: <span class="number">24</span>,</span><br><span class="line">            <span class="string">'height'</span>: <span class="number">24</span>,</span><br><span class="line">            <span class="string">'y'</span>: <span class="number">-12</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">link2.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> link3 = <span class="keyword">new</span> joint.shapes.standard.Link();</span><br><span class="line">link3.source(rect3);</span><br><span class="line">link3.target(rect4);</span><br><span class="line">link3.connector(<span class="string">'jumpover'</span>, &#123; <span class="attr">size</span>: <span class="number">10</span> &#125;);</span><br><span class="line">link3.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect5 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect5.position(<span class="number">100</span>, <span class="number">230</span>);</span><br><span class="line">rect5.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect5.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#2ECC71'</span>,</span><br><span class="line">        strokeDasharray: <span class="string">'10,2'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'Hello'</span>,</span><br><span class="line">        fill: <span class="string">'black'</span>,</span><br><span class="line">        fontSize: <span class="number">13</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">rect5.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect6 = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span><br><span class="line">rect6.position(<span class="number">400</span>, <span class="number">230</span>);</span><br><span class="line">rect6.resize(<span class="number">100</span>, <span class="number">40</span>);</span><br><span class="line">rect6.attr(&#123;</span><br><span class="line">    body: &#123;</span><br><span class="line">        fill: <span class="string">'#F39C12'</span>,</span><br><span class="line">        rx: <span class="number">20</span>,</span><br><span class="line">        ry: <span class="number">20</span>,</span><br><span class="line">        strokeDasharray: <span class="string">'1,1'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    label: &#123;</span><br><span class="line">        text: <span class="string">'World!'</span>,</span><br><span class="line">        fill: <span class="string">'gray'</span>,</span><br><span class="line">        fontSize: <span class="number">18</span>,</span><br><span class="line">        fontWeight: <span class="string">'bold'</span>,</span><br><span class="line">        fontVariant: <span class="string">'small-caps'</span>,</span><br><span class="line">        textShadow: <span class="string">'1px 1px 1px black'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">rect6.addTo(graph);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> link4 = <span class="keyword">new</span> joint.shapes.standard.Link();</span><br><span class="line">link4.source(rect5);</span><br><span class="line">link4.target(rect6);</span><br><span class="line">link4.attr(&#123;</span><br><span class="line">    line: &#123;</span><br><span class="line">        stroke: <span class="string">'#3498DB'</span>,</span><br><span class="line">        strokeWidth: <span class="number">3</span>,</span><br><span class="line">        strokeDasharray: <span class="string">'5 5'</span>,</span><br><span class="line">        strokeDashoffset: <span class="number">7.5</span>,</span><br><span class="line">        sourceMarker: &#123;</span><br><span class="line">            <span class="string">'type'</span>: <span class="string">'path'</span>,</span><br><span class="line">            <span class="string">'stroke'</span>: <span class="string">'none'</span>,</span><br><span class="line">            <span class="string">'fill'</span>: <span class="string">'#3498DB'</span>,</span><br><span class="line">            <span class="string">'d'</span>: <span class="string">'M 20 -10 0 0 20 10 Z \</span></span><br><span class="line"><span class="string">                M 40 -10 20 0 40 10 Z'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        targetMarker: &#123;</span><br><span class="line">            <span class="string">'type'</span>: <span class="string">'path'</span>,</span><br><span class="line">            <span class="string">'stroke'</span>: <span class="string">'none'</span>,</span><br><span class="line">            <span class="string">'fill'</span>: <span class="string">'#3498DB'</span>,</span><br><span class="line">            <span class="string">'d'</span>: <span class="string">'M 7.5 -10 2.5 -10 2.5 10 7.5 10 Z \</span></span><br><span class="line"><span class="string">                M 17.5 -10 12.5 -10 12.5 10 17.5 10 Z \</span></span><br><span class="line"><span class="string">                M 40 -10 20 0 40 10 Z'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">link4.addTo(graph);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>参考</strong><br><a href="https://resources.jointjs.com/tutorial" target="_blank" rel="noopener">Joint tutorial</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.51doo.com/2019/11/23/joint004/" data-id="ck3b9cmy5000h2gtrv7u7zytp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jointJs/">jointJs</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/11/23/joint005/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Event 事件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/06/20191106/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JdbcTemplate添加事务（非配置）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Joint教程/">Joint教程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发/">开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏/">游戏</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JdbcTemplate/">JdbcTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Phaser-js/">Phaser.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jointJs/">jointJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JdbcTemplate/" style="font-size: 10px;">JdbcTemplate</a> <a href="/tags/Phaser-js/" style="font-size: 10px;">Phaser.js</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jointJs/" style="font-size: 20px;">jointJs</a> <a href="/tags/事务/" style="font-size: 10px;">事务</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/23/joint001/">HELLO WORLD!</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/joint002/">Paper &amp; Grid 缩略图!</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/joint003/">Element 元素!</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/joint005/">Event 事件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/23/joint004/">Link 连线</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 尹超<br>
+      Powered by <a href="https://yinawake.github.io/" target="_blank">Yinawake</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章列表</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

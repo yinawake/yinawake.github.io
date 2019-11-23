@@ -108,7 +108,7 @@
 </ul>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"/my/joint/joint.css"</span> /&gt;</span>	</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/jquery.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/lodash.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/backbone.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/joint.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myholder"</span>&gt;</span>  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> graph = <span class="keyword">new</span> joint.dia.Graph;</span></span><br><span class="line">	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> paper = <span class="keyword">new</span> joint.dia.Paper(&#123;</span></span><br><span class="line"><span class="javascript">		el: <span class="built_in">document</span>.getElementById(<span class="string">'myholder'</span>),</span></span><br><span class="line">		model: graph,</span><br><span class="line">		width: 600,</span><br><span class="line">		height: 100,</span><br><span class="line">		gridSize: 1</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> rect = <span class="keyword">new</span> joint.shapes.standard.Rectangle();</span></span><br><span class="line">	rect.position(100, 30);</span><br><span class="line">	rect.resize(100, 40);</span><br><span class="line">	rect.attr(&#123;</span><br><span class="line">		body: &#123;</span><br><span class="line"><span class="javascript">			fill: <span class="string">'blue'</span></span></span><br><span class="line">		&#125;,</span><br><span class="line">		label: &#123;</span><br><span class="line"><span class="javascript">			text: <span class="string">'hello'</span>,</span></span><br><span class="line"><span class="javascript">			fill: <span class="string">'white'</span></span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	rect.addTo(graph);</span><br><span class="line">	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> rect2 = rect.clone();</span></span><br><span class="line">	rect2.translate(300, 0);</span><br><span class="line"><span class="javascript">	rect2.attr(<span class="string">'label/text'</span>, <span class="string">'world!'</span>);</span></span><br><span class="line">	rect2.addTo(graph);</span><br><span class="line">	</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> link = <span class="keyword">new</span> joint.shapes.standard.Link();</span></span><br><span class="line">	link.source(rect);</span><br><span class="line">	link.target(rect2);</span><br><span class="line">	link.addTo(graph);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myholder"</span>&gt;</span>  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>	</span><br><span class="line">	var graph = new joint.dia.Graph;</span><br><span class="line">	</span><br><span class="line">	var paper = new joint.dia.Paper(&#123;</span><br><span class="line">		el: document.getElementById('myholder'),</span><br><span class="line">		model: graph,</span><br><span class="line">		width: 600,</span><br><span class="line">		height: 100,</span><br><span class="line">		gridSize: 1</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	var rect = new joint.shapes.standard.Rectangle();</span><br><span class="line">	rect.position(100, 30);</span><br><span class="line">	rect.resize(100, 40);</span><br><span class="line">	rect.attr(&#123;</span><br><span class="line">		body: &#123;</span><br><span class="line">			fill: 'blue'</span><br><span class="line">		&#125;,</span><br><span class="line">		label: &#123;</span><br><span class="line">			text: 'hello',</span><br><span class="line">			fill: 'white'</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	rect.addTo(graph);</span><br><span class="line">	</span><br><span class="line">	var rect2 = rect.clone();</span><br><span class="line">	rect2.translate(300, 0);</span><br><span class="line">	rect2.attr('label/text', 'world!');</span><br><span class="line">	rect2.addTo(graph);</span><br><span class="line">	</span><br><span class="line">	var link = new joint.shapes.standard.Link();</span><br><span class="line">	link.source(rect);</span><br><span class="line">	link.target(rect2);</span><br><span class="line">	link.addTo(graph);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 <p><strong>参考</strong><br><a href="https://resources.jointjs.com/tutorial" target="_blank" rel="noopener">Joint tutorial</a></p>
@@ -116,7 +116,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/11/23/joint001/" data-id="ck3b5g9wt000ar8trix7iigi2" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/11/23/joint001/" data-id="ck3b9cmxf00002gtr5iuhm4bx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jointJs/">jointJs</a></li></ul>
@@ -127,19 +127,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/11/23/joint003/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Element 元素!
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/06/20191106/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/11/23/joint002/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JdbcTemplate添加事务（非配置）</div>
+      <div class="article-nav-title">Paper &amp; Grid 缩略图!</div>
     </a>
   
 </nav>
@@ -197,6 +188,10 @@
       <ul>
         
           <li>
+            <a href="/2019/11/23/joint001/">HELLO WORLD!</a>
+          </li>
+        
+          <li>
             <a href="/2019/11/23/joint002/">Paper &amp; Grid 缩略图!</a>
           </li>
         
@@ -205,15 +200,11 @@
           </li>
         
           <li>
-            <a href="/2019/11/23/joint001/">HELLO WORLD!</a>
+            <a href="/2019/11/23/joint005/">Event 事件</a>
           </li>
         
           <li>
-            <a href="/2019/11/06/20191106/">JdbcTemplate添加事务（非配置）</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/17/phaser_2048/">游戏2048</a>
+            <a href="/2019/11/23/joint004/">Link 连线</a>
           </li>
         
       </ul>
