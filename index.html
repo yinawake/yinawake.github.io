@@ -62,6 +62,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-joint001" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/23/joint001/" class="article-date">
+  <time datetime="2019-11-22T16:00:00.000Z" itemprop="datePublished">2019-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Joint教程/">Joint教程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/23/joint001/">HELLO WORLD!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <link rel="stylesheet" type="text/css" href="/my/joint/joint.css">    
+<script src="/my/joint/jquery.js"></script>
+<script src="/my/joint/lodash.js"></script>
+<script src="/my/joint/backbone.js"></script>
+<script src="/my/joint/joint.js"></script>
+<div id="myholder"></div>
+<script src="/my/joint_t/joint001.js"></script>
+
+<hr>
+<ul>
+<li>引入<code>jointJs</code>依赖 </li>
+<li>定义<code>graph</code>、<code>paper</code></li>
+<li>创建两个矩形</li>
+<li>创建连线连接两个元素</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"/my/joint/joint.css"</span> /&gt;</span>	</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/jquery.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/lodash.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/backbone.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/joint.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myholder"</span>&gt;</span>  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>	</span><br><span class="line">	var graph = new joint.dia.Graph;</span><br><span class="line">	</span><br><span class="line">	var paper = new joint.dia.Paper(&#123;</span><br><span class="line">		el: document.getElementById('myholder'),</span><br><span class="line">		model: graph,</span><br><span class="line">		width: 600,</span><br><span class="line">		height: 100,</span><br><span class="line">		gridSize: 1</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	var rect = new joint.shapes.standard.Rectangle();</span><br><span class="line">	rect.position(100, 30);</span><br><span class="line">	rect.resize(100, 40);</span><br><span class="line">	rect.attr(&#123;</span><br><span class="line">		body: &#123;</span><br><span class="line">			fill: 'blue'</span><br><span class="line">		&#125;,</span><br><span class="line">		label: &#123;</span><br><span class="line">			text: 'hello',</span><br><span class="line">			fill: 'white'</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	rect.addTo(graph);</span><br><span class="line">	</span><br><span class="line">	var rect2 = rect.clone();</span><br><span class="line">	rect2.translate(300, 0);</span><br><span class="line">	rect2.attr('label/text', 'world!');</span><br><span class="line">	rect2.addTo(graph);</span><br><span class="line">	</span><br><span class="line">	var link = new joint.shapes.standard.Link();</span><br><span class="line">	link.source(rect);</span><br><span class="line">	link.target(rect2);</span><br><span class="line">	link.addTo(graph);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>参考</strong><br><a href="https://resources.jointjs.com/tutorial" target="_blank" rel="noopener">Joint tutorial</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.51doo.com/2019/11/23/joint001/" data-id="ck3b02y1m0005wstrc2912g5r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jointJs/">jointJs</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-20191106" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/06/20191106/" class="article-date">
@@ -107,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/11/06/20191106/" data-id="ck2y6uawb0000q0trsuftqtn8" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/11/06/20191106/" data-id="ck3b02y190000wstrseqf0bp5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JdbcTemplate/">JdbcTemplate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/事务/">事务</a></li></ul>
@@ -178,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/10/17/phaser_2048/" data-id="ck2y6uawq0004q0trv3r2s6fe" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/10/17/phaser_2048/" data-id="ck3b02y1f0001wstrjh88ahej" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Phaser-js/">Phaser.js</a></li></ul>
@@ -223,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://github.51doo.com/2019/10/16/hexo学习/" data-id="ck2y6uawm0001q0tramo0jihb" class="article-share-link">Share</a>
+      <a data-url="http://github.51doo.com/2019/10/16/hexo学习/" data-id="ck3b02y1k0004wstryzi3eng0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -245,7 +308,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发/">开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏/">游戏</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Joint教程/">Joint教程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发/">开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏/">游戏</a></li></ul>
     </div>
   </div>
 
@@ -255,7 +318,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JdbcTemplate/">JdbcTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Phaser-js/">Phaser.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JdbcTemplate/">JdbcTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Phaser-js/">Phaser.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jointJs/">jointJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a></li></ul>
     </div>
   </div>
 
@@ -265,7 +328,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JdbcTemplate/" style="font-size: 10px;">JdbcTemplate</a> <a href="/tags/Phaser-js/" style="font-size: 10px;">Phaser.js</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/事务/" style="font-size: 10px;">事务</a>
+      <a href="/tags/JdbcTemplate/" style="font-size: 10px;">JdbcTemplate</a> <a href="/tags/Phaser-js/" style="font-size: 10px;">Phaser.js</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jointJs/" style="font-size: 10px;">jointJs</a> <a href="/tags/事务/" style="font-size: 10px;">事务</a>
     </div>
   </div>
 
@@ -285,6 +348,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/11/23/joint001/">HELLO WORLD!</a>
+          </li>
         
           <li>
             <a href="/2019/11/06/20191106/">JdbcTemplate添加事务（非配置）</a>

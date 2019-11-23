@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>HELLO WORLD! | </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引入jointJs依赖  定义graph、paper 创建两个矩形 创建连线连接两个元素  12345&amp;lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/my/joint/joint.css&quot; /&amp;gt;	&amp;lt;script src=&quot;/my/joint/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;s">
+<meta name="keywords" content="jointJs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HELLO WORLD!">
+<meta property="og:url" content="http://github.51doo.com/2019/11/23/joint001/index.html">
+<meta property="og:site_name">
+<meta property="og:description" content="引入jointJs依赖  定义graph、paper 创建两个矩形 创建连线连接两个元素  12345&amp;lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/my/joint/joint.css&quot; /&amp;gt;	&amp;lt;script src=&quot;/my/joint/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;s">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-23T03:13:52.518Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HELLO WORLD!">
+<meta name="twitter:description" content="引入jointJs依赖  定义graph、paper 创建两个矩形 创建连线连接两个元素  12345&amp;lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/my/joint/joint.css&quot; /&amp;gt;	&amp;lt;script src=&quot;/my/joint/jquery.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;s">
+  
+    <link rel="alternate" href="/atom.xml" title type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo"></a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章列表</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://github.51doo.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-joint001" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/23/joint001/" class="article-date">
+  <time datetime="2019-11-22T16:00:00.000Z" itemprop="datePublished">2019-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Joint教程/">Joint教程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HELLO WORLD!
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <link rel="stylesheet" type="text/css" href="/my/joint/joint.css">    
+<script src="/my/joint/jquery.js"></script>
+<script src="/my/joint/lodash.js"></script>
+<script src="/my/joint/backbone.js"></script>
+<script src="/my/joint/joint.js"></script>
+<div id="myholder"></div>
+<script src="/my/joint_t/joint001.js"></script>
+
+<hr>
+<ul>
+<li>引入<code>jointJs</code>依赖 </li>
+<li>定义<code>graph</code>、<code>paper</code></li>
+<li>创建两个矩形</li>
+<li>创建连线连接两个元素</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"/my/joint/joint.css"</span> /&gt;</span>	</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/jquery.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/lodash.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/backbone.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/my/joint/joint.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myholder"</span>&gt;</span>  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span>	</span><br><span class="line">	var graph = new joint.dia.Graph;</span><br><span class="line">	</span><br><span class="line">	var paper = new joint.dia.Paper(&#123;</span><br><span class="line">		el: document.getElementById('myholder'),</span><br><span class="line">		model: graph,</span><br><span class="line">		width: 600,</span><br><span class="line">		height: 100,</span><br><span class="line">		gridSize: 1</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	var rect = new joint.shapes.standard.Rectangle();</span><br><span class="line">	rect.position(100, 30);</span><br><span class="line">	rect.resize(100, 40);</span><br><span class="line">	rect.attr(&#123;</span><br><span class="line">		body: &#123;</span><br><span class="line">			fill: 'blue'</span><br><span class="line">		&#125;,</span><br><span class="line">		label: &#123;</span><br><span class="line">			text: 'hello',</span><br><span class="line">			fill: 'white'</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">	</span><br><span class="line">	rect.addTo(graph);</span><br><span class="line">	</span><br><span class="line">	var rect2 = rect.clone();</span><br><span class="line">	rect2.translate(300, 0);</span><br><span class="line">	rect2.attr('label/text', 'world!');</span><br><span class="line">	rect2.addTo(graph);</span><br><span class="line">	</span><br><span class="line">	var link = new joint.shapes.standard.Link();</span><br><span class="line">	link.source(rect);</span><br><span class="line">	link.target(rect2);</span><br><span class="line">	link.addTo(graph);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>参考</strong><br><a href="https://resources.jointjs.com/tutorial" target="_blank" rel="noopener">Joint tutorial</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://github.51doo.com/2019/11/23/joint001/" data-id="ck3b02y1m0005wstrc2912g5r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jointJs/">jointJs</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/06/20191106/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JdbcTemplate添加事务（非配置）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Joint教程/">Joint教程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发/">开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/游戏/">游戏</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JdbcTemplate/">JdbcTemplate</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Phaser-js/">Phaser.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jointJs/">jointJs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/事务/">事务</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JdbcTemplate/" style="font-size: 10px;">JdbcTemplate</a> <a href="/tags/Phaser-js/" style="font-size: 10px;">Phaser.js</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jointJs/" style="font-size: 10px;">jointJs</a> <a href="/tags/事务/" style="font-size: 10px;">事务</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/23/joint001/">HELLO WORLD!</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/06/20191106/">JdbcTemplate添加事务（非配置）</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/17/phaser_2048/">游戏2048</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/16/hexo学习/">Hexo学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 尹超<br>
+      Powered by <a href="https://yinawake.github.io/" target="_blank">Yinawake</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章列表</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
